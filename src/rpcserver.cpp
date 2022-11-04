@@ -213,7 +213,17 @@ Value stop(const Array& params, bool fHelp)
     return "Smileycoin server stopping";
 }
 
-
+Value onetoten(const Array& params, bool fHelp){
+    if (fHelp || params.size() > 0){
+        throw runtime_error(
+            "This command will return\n"
+            "a random value between 1 and 10\n"
+        );
+    }
+    int random;
+    random = rand() % 10 + 1;
+    return random;
+}
 
 //
 // Call Table
@@ -227,7 +237,7 @@ static const CRPCCommand vRPCCommands[] =
     { "getinfo",                &getinfo,                true,      false,      false }, /* uses wallet if enabled */
     { "help",                   &help,                   true,      true,       false },
     { "stop",                   &stop,                   true,      true,       false },
-
+    { "onetoten",               &onetoten,               true,      true,       false },
     /* P2P networking */
     { "getnetworkinfo",         &getnetworkinfo,         true,      false,      false },
     { "addnode",                &addnode,                true,      true,       false },
